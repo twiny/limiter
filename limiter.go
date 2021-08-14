@@ -42,8 +42,8 @@ func (l *Limiter) Get(ip string) (*rate.Limiter, bool) {
 	return rate, found
 }
 
-// clean
-func (l *Limiter) Clean() {
+// purge
+func (l *Limiter) Purge() {
 	l.mu.RLock()
 	defer l.mu.RUnlock()
 
