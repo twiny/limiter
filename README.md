@@ -1,9 +1,22 @@
 ## HTTP Rate Limiter
 rate limit HTTP requests based on client IP address.
 
-## Example
+### Install
+`go get github.com/issmeftah/limiter`
+
+### Example
 
 ```go
+
+import "github.com/issmeftah/limiter"
+
+// App
+type App struct{
+    ... ...
+    limiter *limiter.Limiter
+    ... ...
+}
+
 // RateLimit
 func (a *App) RateAllow(ip string) bool {
 	limit, found := a.limiter.Get(ip)
@@ -17,6 +30,13 @@ func (a *App) RateAllow(ip string) bool {
 ```
 
 ```go
+// HTTPHandler
+type HTTPHandler struct{
+    ... ...
+    app *App
+    ... ...
+}
+
 // rate limit
 func (route *HTTPHandler) ratelimit(h http.Handler) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
