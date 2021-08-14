@@ -47,7 +47,7 @@ func (route *HTTPHandler) ratelimit(h http.Handler) http.Handler {
 		}
 
 		if !route.app.RateAllow(remoteIP) {
-			route.write(w, "too fast", http.StatusTooManyRequests)
+			http.Error(w,"going too fast - slow up", http.StatusTooManyRequests)
 			return
 		}
 
