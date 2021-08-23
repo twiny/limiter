@@ -2,13 +2,13 @@
 rate limit HTTP requests based on client IP address.
 
 ### Install
-`go get github.com/issmeftah/limiter`
+`go get github.com/twiny/limiter`
 
 ### Example
 
 ```go
 
-import "github.com/issmeftah/limiter"
+import "github.com/twiny/limiter"
 
 // App
 type App struct{
